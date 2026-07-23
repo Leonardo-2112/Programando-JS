@@ -2,7 +2,7 @@ const estudantes = require('./estudantes.json');
 
 function filtarPorPropriedade(lista, propriedade){
      return lista.filter((estudante) => {
-        //Verifica se dentro do objeto endereco tem a não propriedade do parametro
+        //Verifica se dentro do objeto endereco não tem a propriedade do parametro
         return !estudante.endereco.hasOwnProperty(propriedade);
      })
 };
