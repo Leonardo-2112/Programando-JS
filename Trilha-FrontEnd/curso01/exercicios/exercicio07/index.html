@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Compras</title>
+  </head>
+
+  <body>
+    <main>
+      <form>
+        <input
+          class="input-item"
+          id="input-item"
+          type="text"
+          placeholder="Digite o item que deseja adicionar"
+        />
+        <button class="button-item" id="button-item" type="button">Salvar item</button>
+      </form>
+
+      <div class="container-lista">
+        <h2>Lista de compras</h2>
+
+        <ul id="lista-de-compras">
+          <li>
+            <div class="lista-item-container">
+              <input type="checkbox" id="checkbox-1" />
+              <p>Ração de gato</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
