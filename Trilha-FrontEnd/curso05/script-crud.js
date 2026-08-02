@@ -4,9 +4,21 @@ const btnAdicionarTarefa = document.querySelector('.app__button--add-task');
 const formAdicionarTarefa = document.querySelector('.app__form-add-task');
 const textarea = document.querySelector('.app__form-textarea');
 const ulTarefas = document.querySelector('.app__section-task-list');
+const btnCancelar = document.querySelector('.app__form-footer__button--cancel');
 
 //getItem -> método da localStorage que permite pegar valores de um lugar salvo
 const tarefas = JSON.parse(localStorage.getItem('tarefas')) || []; //Caso n tenha valor para converter ele coloca um array vazio
+
+function atualizarTarefas() {
+    //localStorage ->  Os dados continuam salvos mesmo se você fechar a aba (só salva strings)
+    //(onde irá salvar, oque deve salvar)
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));//convertendo objeto em strings usando JSON
+}
+
+function cancelarTarefa(){
+    textarea.value = "";
+    formAdicionarTarefa.classList.add('hidden');
+}
 
 function criarElementoTarefa(tarefa) {
     const li = document.createElement('li');
@@ -24,10 +36,24 @@ function criarElementoTarefa(tarefa) {
     //Atribui o valor de descriçao ao elemento 'p'
     paragrafo.textContent = tarefa.descricao;
     paragrafo.classList.add('app__section-task-list-item-description');
-    
+
     const botao = document.createElement('button');
     botao.classList.add('app_button-edit');
-    
+
+    //quando o botão de editar for clicado
+    botao.onclick = () => {
+        //debugger
+        //prompt -> abre caixa de dialogo com uma mensagem
+        const novaDescricao = prompt("Qual é o novo nome da tarefa?");
+        if (novaDescricao) {
+            //Sobreescreve o paragrafo com a nova descricao passada
+            paragrafo.textContent = novaDescricao;
+            tarefa.descricao = novaDescricao;
+
+            atualizarTarefas();
+        }
+    }
+
     const imagemBotao = document.createElement('img');
     //Passa como valor da imagem o caminho dela
     imagemBotao.setAttribute('src', 'imagens/edit.png');
@@ -37,7 +63,7 @@ function criarElementoTarefa(tarefa) {
     li.append(svg)
     li.append(paragrafo)
     li.append(botao)
-    
+
     return li;
 }
 
@@ -46,6 +72,9 @@ btnAdicionarTarefa.addEventListener('click', () => {
     //funcionando exatamente como um interruptor
     formAdicionarTarefa.classList.toggle('hidden')
 });
+
+// quando clicado chama função cancelarTarefa
+btnCancelar.addEventListener('click', cancelarTarefa);
 
 //submit -> quando enviar um formulário
 formAdicionarTarefa.addEventListener('submit', (evento) => {
@@ -61,9 +90,7 @@ formAdicionarTarefa.addEventListener('submit', (evento) => {
     const elementoTarefa = criarElementoTarefa(tarefa);
     ulTarefas.append(elementoTarefa);
 
-    //localStorage ->  Os dados continuam salvos mesmo se você fechar a aba (só salva strings)
-    //(onde irá salvar, oque deve salvar)
-    localStorage.setItem('tarefas', JSON.stringify(tarefas));//convertendo objeto em strings usando JSON
+    atualizarTarefas();
 
     //Limpando textarea e escondendo form após adicionar tarefa nova
     textarea.value = '';
