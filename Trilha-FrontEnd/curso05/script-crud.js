@@ -5,9 +5,15 @@ const formAdicionarTarefa = document.querySelector('.app__form-add-task');
 const textarea = document.querySelector('.app__form-textarea');
 const ulTarefas = document.querySelector('.app__section-task-list');
 const btnCancelar = document.querySelector('.app__form-footer__button--cancel');
+const paragrafoDescricaoTarefa = document.querySelector('.app__section-active-task-description');
+
+const btnRemoverConcluidas = document.querySelector('#btn-remover-concluidas');
+const btnRemoverTodas = document.querySelector('#btn-remover-todas');
 
 //getItem -> método da localStorage que permite pegar valores de um lugar salvo
-const tarefas = JSON.parse(localStorage.getItem('tarefas')) || []; //Caso n tenha valor para converter ele coloca um array vazio
+let tarefas = JSON.parse(localStorage.getItem('tarefas')) || []; //Caso n tenha valor para converter ele coloca um array vazio
+let tarefaSelecionada = null;
+let liTarefaSelecionada = null;
 
 function atualizarTarefas() {
     //localStorage ->  Os dados continuam salvos mesmo se você fechar a aba (só salva strings)
@@ -60,12 +66,42 @@ function criarElementoTarefa(tarefa) {
     //coloca a imagem dentro do botão
     botao.append(imagemBotao);
     //coloca os elementos criados dentro da li
-    li.append(svg)
-    li.append(paragrafo)
-    li.append(botao)
+    li.append(svg);
+    li.append(paragrafo);
+    li.append(botao);
 
+    if(tarefa.completa){
+        li.classList.add('app__section-task-list-item-complete');
+        botao.setAttribute('disabled', 'disabled');
+    }else{
+        //quando clicar em uma item da lista ele coloca o texto do item no elemento p de "paragrafoDescricao" 
+        li.onclick = () => {
+            //debugger
+            //seleciona todoa elementos com esta classe e percorre o array de retornou
+            document.querySelectorAll('.app__section-task-list-item-active')
+            .forEach((elemento) => {
+                //remove esta classe de todos os elementos
+                elemento.classList.remove('app__section-task-list-item-active');
+            });
+    
+            // Verifica se a tarefa clicada é a mesma que está selecionada acima
+            if(tarefaSelecionada == tarefa){
+                paragrafoDescricaoTarefa.textContent = '';
+                liTarefaSelecionada = null;
+                tarefaSelecionada = null;
+                return
+            }
+            //atribui a tarefa que eu selecionei ao objeto tarefa com descricao
+            tarefaSelecionada = tarefa;
+            liTarefaSelecionada = li;
+            paragrafoDescricaoTarefa.textContent = tarefa.descricao;
+            // adiciona uma classe para estilização
+            li.classList.add('app__section-task-list-item-active');
+        }
+    }
     return li;
 }
+    
 
 btnAdicionarTarefa.addEventListener('click', () => {
     //toggle -> adiciona a classe CSS ao elemento se ela não existir, ou a remove se ela já estiver presente, 
@@ -103,3 +139,32 @@ tarefas.forEach(tarefa => {
     //Coloca o elemento criado dentro da ul
     ulTarefas.append(elementoTarefa);
 });
+
+document.addEventListener('FocoFinalizado', () => {
+    if(tarefaSelecionada && liTarefaSelecionada){
+        liTarefaSelecionada.classList.remove('app__section-task-list-item-active');
+        liTarefaSelecionada.classList.add('app__section-task-list-item-complete');
+        liTarefaSelecionada.querySelector('button').setAttribute('disabled', 'disabled');
+        tarefaSelecionada.completa = true;
+        atualizarTarefas();
+    }
+});
+
+const removerTarefas = (somenteCompletas) => {
+    //Limpa o elemento do HTML
+    //Filtrando caso seja tarefa completa ou todas as tarefas
+    const seletor = somenteCompletas ? ".app__section-task-list-item-complete" : ".app__section-task-list";//if ternário 
+    document.querySelectorAll(seletor).forEach((elemento) => {
+        elemento.remove();
+    });
+    //Limpa o elmento do localStorage
+    //Filtrando caso seja tarefa completa utiliza o filtro ou todas as tarefas retorna array vazio
+    tarefas = somenteCompletas ? tarefas.filter(tarefa => !tarefa.completa) : [];
+    atualizarTarefas();
+};
+
+//Remove com o clique de cada botão
+//Para remover somente as concluidas ele passa true como parametro para função(somenteCompletas?)
+btnRemoverConcluidas.onclick = () => removerTarefas(true);
+//Para remover todas ele passa flase para o prametro da função(somenteCompletas?)
+btnRemoverTodas.onclick = () => removerTarefas(false);
