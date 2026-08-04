@@ -118,13 +118,13 @@ h2, h3 {
   margin-top: 40px;
 }
 
- #pensamento-form {
+ #pet-form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-#pensamento-conteudo, #pensamento-autoria {
+#pet-nome, #pet-especie, #pet-raca {
   padding: 16px;
   border-radius: 8px;
   background: var(--Cinza-claro, #EDF0F4);
@@ -132,11 +132,11 @@ h2, h3 {
   overflow-wrap: break-word; 
 }
 
-#pensamento-conteudo {
+#pet-nome {
   min-height: 80px;
 }
 
-#pensamento-form label {
+#pet-form label {
   margin-bottom: 16px;
   color: var(--Azul-Dark, #041832);
   font-family: "Poppins", sans-serif;
@@ -146,7 +146,7 @@ h2, h3 {
   line-height: normal;
 }
 
-#pensamento-conteudo::placeholder,  #pensamento-autoria::placeholder{
+#pet-nome::placeholder,  #pet-especie::placeholder, #pet-raca::placeholder{
   color: var(--Cinza-medio, #8F8F8F);
   font-family: "Poppins", sans-serif;
   font-size: 16px;
@@ -155,8 +155,8 @@ h2, h3 {
   line-height: normal;
 }
 
-#pensamento-form textarea,
-#pensamento-form input {
+#pet-form textarea,
+#pet-form input {
   margin-bottom: 24px;
   outline: none;
   border-style: none;
@@ -191,17 +191,17 @@ h2, h3 {
   color: var(--Azul-Dark, #041832);
 }
 
-#lista-pensamentos-container {
+#lista-pets-container {
   width: 100%;
   max-width: 1200px;
   margin: 40px 0;
 }
 
-#lista-pensamentos-container h3 {
+#lista-pets-container h3 {
   margin: 40px 0;
 }
 
-#lista-pensamentos {
+#lista-pets {
   list-style: none;
   padding: 0;
   display: flex;
@@ -210,7 +210,7 @@ h2, h3 {
   row-gap: 32px;
 }
 
-.li-pensamento {
+.li-pet {
   position: relative;
   padding: 16px;
   background: var(--Branco, #FFF);
@@ -234,7 +234,7 @@ h2, h3 {
   height: 50px;
 }
 
-.pensamento-conteudo, .pensamento-autoria {
+.pet-nome, .pet-especie, .pet-raca{
   margin-left: 20px; 
   color: var(--Cinza, #444);
   font-family: "Roboto Mono";
@@ -246,13 +246,13 @@ h2, h3 {
   hyphens: auto;
 }
 
-.pensamento-conteudo {
+.pet-nome, .pet-raca {
   margin-top: 96px; 
   font-size: 20px;
   font-weight: 400;
 }
 
-.pensamento-autoria {
+.pet-especie {
   font-size: 22px;
   font-weight: 600;
 }

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CRUD de Pensamentos</title>
+  <title>CRUD de Pets</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -26,17 +26,21 @@
   <main class="background-overlay">
     <div class="overlay"></div>
     <div class="overlay overlay-color"></div>
-    <h2>Adicione um pensamento novo:</h2>
+    <h2>Adicione um pet novo:</h2>
     <section id="form-container">
-      <form id="pensamento-form">
-        <input type="hidden" id="pensamento-id" />
-        <label for="pensamento-conteudo">Pensamento</label>
-        <textarea id="pensamento-conteudo" placeholder="Digite seu pensamento" required>
+      <form id="pet-form">
+        <input type="hidden" id="pet-id" />
+        <label for="pet-nome">Pet</label>
+        <textarea id="pet-nome" placeholder="Digite seu pet">
           </textarea>
-        <label for="pensamento-autoria">
-          Autoria ou Fonte
+        <label for="pet-especie">
+          Espécie
         </label>
-        <input type="text" id="pensamento-autoria" placeholder="Insira a autoria ou fonte" required />
+        <input type="text" id="pet-especie" placeholder="Insira a espécie"/>
+        <label for="pet-raca">
+          Raça
+        </label>
+        <input type="text" id="pet-raca" placeholder="Insira a raça do seu pet"/>
         <div class="form-botoes">
           <button type="submit" id="botao-salvar">
             Adicionar
@@ -48,9 +52,9 @@
       </form>
     </section>
     <span></span>
-    <section id="lista-pensamentos-container">
+    <section id="lista-pets-container">
       <h3>Meu Mural</h3>
-      <ul id="lista-pensamentos"></ul>
+      <ul id="lista-pets"></ul>
     </section>
   </main>
   <footer>

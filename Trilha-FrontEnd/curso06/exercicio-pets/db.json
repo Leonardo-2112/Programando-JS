@@ -1,10 +1,10 @@
 {
   "pets": [
     {
-      "id": "1a2b",
+      "nome": "Mimiu",
       "especie": "felina",
-      "nome": "Mimi",
-      "raca": "Siamês"
+      "raca": "Siamês",
+      "id": "1a2b"
     },
     {
       "id": "2b3c",
@@ -19,10 +19,10 @@
       "raca": "Persa"
     },
     {
-      "id": "4d5e",
+      "nome": "Maxe",
       "especie": "canina",
-      "nome": "Max",
-      "raca": "Beagle"
+      "raca": "Beagle",
+      "id": "4d5e"
     },
     {
       "id": "5e6f",
@@ -59,6 +59,43 @@
       "especie": "canina",
       "nome": "Charlie",
       "raca": "Golden Retriever"
+    },
+    {
+      "id": "76TsG8M2YHk",
+      "especie": "Canina",
+      "nome": "Thor",
+      "raca": "Yorkshire"
+    },
+    {
+      "nome": "Mel",
+      "especie": "Canina",
+      "raca": "Yorkshire",
+      "id": "an1RDrhVaHk"
+    },
+    {
+      "nome": "Crodoaldo",
+      "especie": "felina",
+      "raca": "Siamês",
+      "id": "sYf7RbNvTaI"
+    },
+    {
+      "nome": "Momo",
+      "especie": "felina",
+      "raca": "Siamês",
+      "id": "_fdPovEyWek"
+    },
+    {
+      "nome": "Rexona",
+      "especie": "canina",
+      "raca": "Labrador",
+      "id": "Q376Frz1ook"
+    },
+    {
+      "nome": "Nino",
+      "especie": "felina",
+      "raca": "Sphynx",
+      "id": "q3Vt-OM-DeE"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

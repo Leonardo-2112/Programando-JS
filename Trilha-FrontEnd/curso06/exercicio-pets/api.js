@@ -1,18 +1,19 @@
 const api = {
-    async buscarPensamentos(){
+    async buscarPets() {
         try {
-            const response = await fetch('http://localhost:3000/pensamentos');
+            const response = await fetch('http://localhost:3000/pets');
             //Converte json para objeto JS
             return await response.json();
         } catch {
-            alert('Erro ao buscar pensamentos');
+            alert('Erro ao buscar pets');
             throw error;
         }
-         
+
     },
-    async salvarPensamentos(pensamento){
+
+    async salvarPets(pet) {
         try {
-            const response = await fetch('http://localhost:3000/pensamentos', {
+            const response = await fetch('http://localhost:3000/pets', {
                 //POST -> Envia info
                 method: "POST",
                 //headers -> cabeçalho da requisição
@@ -20,46 +21,47 @@ const api = {
                     "Content-Type": "application/json"
                 },
                 //body -> conteúdo da requisição
-                body: JSON.stringify(pensamento)
+                body: JSON.stringify(pet)
             });
             //Converte json para objeto JS
             return await response.json();
         } catch {
-            alert('Erro ao salvar pensamentos');
+            alert('Erro ao salvar pets');
             throw error;
         }
-         
+
     },
-        async buscarPensamentoPorId(id){
+    async buscarPetPorId(id) {
         try {
-            const response = await fetch(`http://localhost:3000/pensamentos/${id}`);
+            const response = await fetch(`http://localhost:3000/pets/${id}`);
             //Converte json para objeto JS
             return await response.json();
         } catch {
-            alert('Erro ao buscar pensamento');
+            alert('Erro ao buscar pet');
             throw error;
         }
+
     },
-    async editarPensamento(pensamento){
+    async EditarPet(pet) {
         try {
-            const response = await fetch(`http://localhost:3000/pensamentos/${pensamento.id}`, {
-                //PUT -> Alterar info
+            const response = await fetch(`http://localhost:3000/pets/${pet.id}`, {
+                //POST -> Envia info
                 method: "PUT",
                 //headers -> cabeçalho da requisição
                 headers: {
                     "Content-Type": "application/json"
                 },
                 //body -> conteúdo da requisição
-                body: JSON.stringify(pensamento)
+                body: JSON.stringify(pet)
             });
             //Converte json para objeto JS
             return await response.json();
         } catch {
-            alert('Erro ao editar pensamentos');
+            alert('Erro ao editar pet');
             throw error;
         }
-    }
 
+    }
 }
 
 export default api;
