@@ -1,9 +1,9 @@
 {
   "pensamentos": [
     {
-      "id": "2a56",
       "conteudo": "Vc faz TI? Conserta meu celular!",
-      "autoria": "Grupo da família"
+      "autoria": "família",
+      "id": "2a56"
     },
     {
       "id": "4c7d",
@@ -59,36 +59,6 @@
       "id": "8b4c",
       "conteudo": "A vingança nunca é plena... mata a alma e a envenena...",
       "autoria": "Seu Madruga"
-    },
-    {
-      "id": "4d2e",
-      "conteudo": "Se eu for aí e achar, eu esfrego na sua cara!",
-      "autoria": "Mãe"
-    },
-    {
-      "conteudo": "Só os loucos sabem",
-      "autoria": "CharlieBrown Jr",
-      "id": "IqjxtsADNyg"
-    },
-    {
-      "conteudo": "          aaaaaaaa",
-      "autoria": "a",
-      "id": "5v8xV87Vi1w"
-    },
-    {
-      "conteudo": "          aaaaaaa",
-      "autoria": "aaaaaaa",
-      "id": "x36Z-KyLQEA"
-    },
-    {
-      "conteudo": "          aaaaaaaaa",
-      "autoria": "a",
-      "id": "Qq6EQsnZ8fo"
-    },
-    {
-      "conteudo": "Na volta a gente Compra",
-      "autoria": "Mãe",
-      "id": "Yzzbd_xLqg4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

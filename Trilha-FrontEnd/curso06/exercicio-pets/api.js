@@ -1,7 +1,9 @@
+const URL_BASE = "http://localhost:3000";
+
 const api = {
     async buscarPets() {
         try {
-            const response = await fetch('http://localhost:3000/pets');
+            const response = await fetch(`${URL_BASE}/pets`);
             //Converte json para objeto JS
             return await response.json();
         } catch {
@@ -13,7 +15,7 @@ const api = {
 
     async salvarPets(pet) {
         try {
-            const response = await fetch('http://localhost:3000/pets', {
+            const response = await fetch(`${URL_BASE}/pets`, {
                 //POST -> Envia info
                 method: "POST",
                 //headers -> cabeçalho da requisição
@@ -33,7 +35,7 @@ const api = {
     },
     async buscarPetPorId(id) {
         try {
-            const response = await fetch(`http://localhost:3000/pets/${id}`);
+            const response = await fetch(`${URL_BASE}/pets/${id}`);
             //Converte json para objeto JS
             return await response.json();
         } catch {
@@ -42,9 +44,9 @@ const api = {
         }
 
     },
-    async EditarPet(pet) {
+    async editarPet(pet) {
         try {
-            const response = await fetch(`http://localhost:3000/pets/${pet.id}`, {
+            const response = await fetch(`${URL_BASE}/pets/${pet.id}`, {
                 //POST -> Envia info
                 method: "PUT",
                 //headers -> cabeçalho da requisição
@@ -58,6 +60,18 @@ const api = {
             return await response.json();
         } catch {
             alert('Erro ao editar pet');
+            throw error;
+        }
+
+    },
+    async excluirPet(id) {
+        try {
+            const response = await fetch(`${URL_BASE}/pets/${id}`, {
+                //delete -> apaga info
+                method: "DELETE",
+            });
+        } catch {
+            alert('Erro ao excluir pet');
             throw error;
         }
 

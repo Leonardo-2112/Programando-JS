@@ -17,11 +17,18 @@ const ui = {
 
     async renderizarPensamentos() {
         const listaPensamentos = document.getElementById("lista-pensamentos");
+        const mensagemVazia = document.getElementById("mensagem-vazia");
+        listaPensamentos.innerHTML = "";
 
         try {
             const pensamentos = await api.buscarPensamentos();
-            //Chama função adicionar o pensamento na lista HTML
-            pensamentos.forEach(ui.adicionarPensamentoNaLista);
+            if (pensamentos.length === 0) {
+                mensagemVazia.style.display = "block";
+            } else {
+                mensagemVazia.style.display = "none";
+                //Chama função adicionar o pensamento na lista HTML
+                pensamentos.forEach(ui.adicionarPensamentoNaLista)
+            }
         } catch {
             alert('Erro ao renderizar pensamentos');
         }
@@ -61,10 +68,32 @@ const ui = {
         //Atribuindo o icone dentro do botão de Editar
         botaoEditar.appendChild(iconeEditar);
 
+
+
+        const botaoExcluir = document.createElement("button");
+        botaoExcluir.classList.add("botao-excluir");
+        botaoExcluir.onclick = async () => {
+            try {
+                await api.excluirPensamento(pensamento.id);
+            } catch (error) {
+                alert("Erro ao excluir pensamento");
+            }
+        };
+
+        //Criando o icone/imagem do botão de Excluir
+        const iconeExcluir = document.createElement("img");
+        iconeExcluir.src = "assets/imagens/icone-excluir.png";
+        iconeExcluir.alt = "Excluir";
+        //Atribuindo o icone dentro do botão de Excluir
+        botaoExcluir.appendChild(iconeExcluir);
+
+
         //Cria uma div e atribui o botão completo(botão + icone) nela
         const icones = document.createElement("div");
         icones.classList.add("icones");
+
         icones.appendChild(botaoEditar);
+        icones.appendChild(botaoExcluir);
 
         //Colocando um elemento dentro do outro
         li.appendChild(iconeAspas);
