@@ -1,41 +1,4 @@
 {
-  "pets": [
-    {
-      "nome": "Bella",
-      "especie": "canina",
-      "raca": "Pastor Alemão",
-      "id": "6f7g"
-    },
-    {
-      "id": "7g8h",
-      "especie": "felina",
-      "nome": "Oscar",
-      "raca": "Bengal"
-    },
-    {
-      "id": "8h9i",
-      "especie": "canina",
-      "nome": "Lola",
-      "raca": "Poodle"
-    },
-    {
-      "id": "0j1k",
-      "especie": "canina",
-      "nome": "Charlie",
-      "raca": "Golden Retriever"
-    },
-    {
-      "id": "76TsG8M2YHk",
-      "especie": "Canina",
-      "nome": "Thor",
-      "raca": "Yorkshire"
-    },
-    {
-      "nome": "Mel",
-      "especie": "Canina",
-      "raca": "Yorkshire",
-      "id": "an1RDrhVaHk"
-    }
-  ],
+  "pets": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

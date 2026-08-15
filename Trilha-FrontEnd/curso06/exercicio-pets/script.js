@@ -15,10 +15,18 @@ const ui = {
 
     async renderizarPets() {
         const listaPets = document.getElementById("lista-pets");
+        const mensagemVazia = document.getElementById("mensagem-vazia");
+        listaPets.innerHTML = ""
 
         try {
             const pets = await api.buscarPets();
             pets.forEach(ui.adicionarPetNaLista)
+            if(pets.length === 0){
+                mensagemVazia.style.display = "block";
+            }else{
+                mensagemVazia.style.display = "none";
+                pets.forEach(ui.adicionarPetNaLista);
+            }
         } catch {
             alert('Erro ao renderizar pets');
         }
